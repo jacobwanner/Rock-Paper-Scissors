@@ -1,3 +1,15 @@
+const amountOfRounds = prompt("How many rounds for this game?");
+let userSelection = getNewUserChoice();
+let computerSelection = getNewComputerChoice();
+const computerWinner = "The computer wins this round.";
+const userWinner = "You win this round.";
+const tieRound = "Tie game. It's a draw!";
+let userScore = 0;
+let computerScore = 0;
+// const endOfGameTie =  "Game over!" + tieRound + "!" + " Final Score: " + userScore + "-" + computerScore;
+// const endOfGameWinner = "Game over! You Win!"+ " Final Score: " + userScore + "-"+ computerScore;
+// const endOfGameLoser = "Game over! You Lose!"+ " Final Score: " + userScore + "-"+ computerScore;
+
 function getNewComputerChoice() {
     let answer = Math.floor(Math.random()*3 +1);  
     if (answer === 1) {
@@ -13,44 +25,21 @@ function getNewUserChoice() {
     return prompt("Write rock paper or scissors:").toLowerCase();
 }
 
-let amountOfRounds = prompt("How many rounds for this game?");
-let userSelection = getNewUserChoice();
-let computerSelection = getNewComputerChoice();
-let computerWinner = "The computer wins this round.";
-let userWinner = "You win this round.";
-let tieRound = "Tie game. It's a draw!";
-let userScore = 0;
-let computerScore = 0;
-
 function playRound(userSelection, computerSelection) {
     if (userSelection === computerSelection) {
         console.log(tieRound)
-    } else if (userSelection === "rock" && computerSelection === "paper" ) {
+    } else if ((userSelection === "rock" && computerSelection === "paper") ||
+              (userSelection === "paper" && computerSelection === "scissors") ||
+              (userSelection === "scissors" && computerSelection === "rock")) {
         console.log(computerWinner)
         computerScore++;
-    } else if (userSelection === "rock" && computerSelection === "scissors" ) {
-        console.log(userWinner)
-        userScore++;
-    } else if (userSelection === "paper" && computerSelection === "rock" ) {
-        console.log(userWinner)
-        userScore++
-    } else if (userSelection === "paper" && computerSelection === "scissors" ) {
-        console.log(computerWinner)
-        computerScore++;
-    } else if (userSelection === "scissors" && computerSelection === "rock" ) {
-        console.log(computerWinner)
-        computerScore++;
-    } else if (userSelection === "scissors" && computerSelection === "paper" ) {
+    } else if ((userSelection === "rock" && computerSelection === "scissors") ||
+              (userSelection === "paper" && computerSelection === "rock") ||
+              (userSelection === "scissors" && computerSelection === "paper")) {
         console.log(userWinner)
         userScore++
-    } else {
-        console.log("Mission Failed. We'll get e'm next time.")
-    }
+    } else console.log("that didnt work")
 }
-
-// let endOfGameTie =  "Game over!" + tieRound + "!" + " Final Score: " + userScore + "-" + computerScore;
-// let endOfGameWinner = "Game over! You Win!"+ " Final Score: " + userScore + "-"+ computerScore;
-// let endOfGameLoser = "Game over! You Lose!"+ " Final Score: " + userScore + "-"+ computerScore;
 
 function game() {
     for (let i=0; i<amountOfRounds; i++){
@@ -62,14 +51,13 @@ function game() {
         console.log("Your score: " + userScore + " Computer score: " + computerScore);
     }
     // if (userScore === computerScore){
-    //     return endOfGameTie;
+    //     console.log(endOfGameTie);
     // } else if (userScore > computerScore){
-    //     return endOfGameWinner;
+    //     console.log(endOfGameWinner);
     // } else if (userScore < computerScore){
-    //     return endOfGameLoser;
-    // } else {
-    //     return "didnt quite work";
+    //     console.log(endOfGameLoser);
     // }
 }
 
 game()
+
