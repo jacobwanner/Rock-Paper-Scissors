@@ -1,8 +1,5 @@
 // const amountOfRounds = prompt("How many rounds for this game?");
 let userSelection = "";
-const computerWinner = "The computer wins this round.";
-const userWinner = "You win this round.";
-const tieRound = "It's a draw!";
 // let userScore = 0;
 // let computerScore = 0;
 // const endOfGameWinner = "Game over! You Win!"+ " Final Score: " + userScore + "-"+ computerScore;
@@ -39,16 +36,16 @@ function playRound() {
     console.log(userSelection);
     console.log(computerSelection);
     if (userSelection === computerSelection) {
-        console.log(tieRound)
+        console.log("It's a draw! You both chose " + userSelection + ".");
     } else if ((userSelection === "rock" && computerSelection === "paper") ||
               (userSelection === "paper" && computerSelection === "scissors") ||
               (userSelection === "scissors" && computerSelection === "rock")) {
-        console.log(computerWinner)
+        console.log("The computer wins this round. " + computerSelection + " beats " + userSelection + ".");
         // computerScore += 1;
     } else if ((userSelection === "rock" && computerSelection === "scissors") ||
               (userSelection === "paper" && computerSelection === "rock") ||
               (userSelection === "scissors" && computerSelection === "paper")) {
-        console.log(userWinner)
+        console.log("You win this round. " + userSelection + " beats " + computerSelection + ".");
         // userScore += 1;
     } else console.log("that didnt work")
 }
