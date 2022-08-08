@@ -1,9 +1,7 @@
-// const amountOfRounds = prompt("How many rounds for this game?");
+const amountOfRounds = prompt("How many rounds for this game?");
 let userSelection = "";
-// let userScore = 0;
-// let computerScore = 0;
-// const endOfGameWinner = "Game over! You Win!"+ " Final Score: " + userScore + "-"+ computerScore;
-// const endOfGameLoser = "Game over! You Lose!"+ " Final Score: " + userScore + "-"+ computerScore;
+let userScore = 0;
+let computerScore = 0;
 
 function getNewComputerChoice() {
     let answer = Math.floor(Math.random()*3 +1);  
@@ -32,7 +30,7 @@ scissors.addEventListener('click', ()=> {
 });
 
 function playRound() {
-    let computerSelection = getNewComputerChoice();
+    const computerSelection = getNewComputerChoice();
     console.log(userSelection);
     console.log(computerSelection);
     if (userSelection === computerSelection) {
@@ -41,11 +39,17 @@ function playRound() {
               (userSelection === "paper" && computerSelection === "scissors") ||
               (userSelection === "scissors" && computerSelection === "rock")) {
         console.log("The computer wins this round. " + computerSelection + " beats " + userSelection + ".");
-        // computerScore += 1;
+        computerScore += 1;
+        if (computerScore == amountOfRounds) {
+            console.log("Game over. You Lose!"+ " Final Score: " + userScore + "-"+ computerScore);
+        }
     } else if ((userSelection === "rock" && computerSelection === "scissors") ||
               (userSelection === "paper" && computerSelection === "rock") ||
               (userSelection === "scissors" && computerSelection === "paper")) {
         console.log("You win this round. " + userSelection + " beats " + computerSelection + ".");
-        // userScore += 1;
+        userScore += 1;
+        if (userScore == amountOfRounds) {
+            console.log("Game over. You Win!"+ " Final Score: " + userScore + "-"+ computerScore);
+        }
     } else console.log("that didnt work")
 }
