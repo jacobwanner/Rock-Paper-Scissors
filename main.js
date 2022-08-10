@@ -2,6 +2,7 @@ const amountOfRounds = prompt("How many rounds for this game?");
 let userSelection = "";
 let userScore = 0;
 let computerScore = 0;
+let result = "";
 
 function getNewComputerChoice() {
     let answer = Math.floor(Math.random()*3 +1);  
@@ -34,22 +35,24 @@ function playRound() {
     console.log(userSelection);
     console.log(computerSelection);
     if (userSelection === computerSelection) {
-        console.log("It's a draw! You both chose " + userSelection + ". Current Score: " + userScore + "-" + computerScore);
+        result = "It's a draw! You both chose " + userSelection + ". Current Score: " + userScore + "-" + computerScore;
     } else if ((userSelection === "rock" && computerSelection === "paper") ||
               (userSelection === "paper" && computerSelection === "scissors") ||
               (userSelection === "scissors" && computerSelection === "rock")) {
         computerScore += 1;
-        console.log("The computer wins this round. " + computerSelection + " beats " + userSelection + ". Current Score: " + userScore + "-" + computerScore);
+        result = "The computer wins this round. " + computerSelection + " beats " + userSelection + ". Current Score: " + userScore + "-" + computerScore;
         if (computerScore == amountOfRounds) {
-            console.log("Game over. You Lose!"+ " Final Score: " + userScore + "-"+ computerScore);
+            result = "Game over. You Lose!"+ " Final Score: " + userScore + "-"+ computerScore;
         }
     } else if ((userSelection === "rock" && computerSelection === "scissors") ||
               (userSelection === "paper" && computerSelection === "rock") ||
               (userSelection === "scissors" && computerSelection === "paper")) {
         userScore += 1;
-        console.log("You win this round. " + userSelection + " beats " + computerSelection + ". Current Score: " + userScore + "-" + computerScore);
+        result = "You win this round. " + userSelection + " beats " + computerSelection + ". Current Score: " + userScore + "-" + computerScore;
         if (userScore == amountOfRounds) {
-            console.log("Game over. You Win!"+ " Final Score: " + userScore + "-" + computerScore);
+            result = "Game over. You Win!"+ " Final Score: " + userScore + "-" + computerScore;
         }
-    } else console.log("that didnt work")
+    } else console.log("that didnt work");
+    document.getElementById('results').innerHTML = result;
+    return;
 }
