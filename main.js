@@ -34,22 +34,22 @@ function playRound() {
     console.log(userSelection);
     console.log(computerSelection);
     if (userSelection === computerSelection) {
-        console.log("It's a draw! You both chose " + userSelection + ".");
+        console.log("It's a draw! You both chose " + userSelection + ". Current Score: " + userScore + "-" + computerScore);
     } else if ((userSelection === "rock" && computerSelection === "paper") ||
               (userSelection === "paper" && computerSelection === "scissors") ||
               (userSelection === "scissors" && computerSelection === "rock")) {
-        console.log("The computer wins this round. " + computerSelection + " beats " + userSelection + ".");
         computerScore += 1;
+        console.log("The computer wins this round. " + computerSelection + " beats " + userSelection + ". Current Score: " + userScore + "-" + computerScore);
         if (computerScore == amountOfRounds) {
             console.log("Game over. You Lose!"+ " Final Score: " + userScore + "-"+ computerScore);
         }
     } else if ((userSelection === "rock" && computerSelection === "scissors") ||
               (userSelection === "paper" && computerSelection === "rock") ||
               (userSelection === "scissors" && computerSelection === "paper")) {
-        console.log("You win this round. " + userSelection + " beats " + computerSelection + ".");
         userScore += 1;
+        console.log("You win this round. " + userSelection + " beats " + computerSelection + ". Current Score: " + userScore + "-" + computerScore);
         if (userScore == amountOfRounds) {
-            console.log("Game over. You Win!"+ " Final Score: " + userScore + "-"+ computerScore);
+            console.log("Game over. You Win!"+ " Final Score: " + userScore + "-" + computerScore);
         }
     } else console.log("that didnt work")
 }
